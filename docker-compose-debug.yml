@@ -1,0 +1,27 @@
+services:
+  api:
+    image: messages-api
+    build:
+      dockerfile: ./Dockerfile
+    container_name: messages-api
+    ports:
+      - 80:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__PostgresMessagesDb = "host=postgres;port=5432;database=messagesdb;username=username123;password=password123",
+
+  postgres:
+    image: postgres
+    container_name: messages-postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    volumes:
+      - messages_db_volume:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: "username123"
+      POSTGRES_PASSWORD: "password123"
+      POSTGRES_DB: "messagesdb"
+
+volumes:
+  messages_db_volume:

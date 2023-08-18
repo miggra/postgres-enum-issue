@@ -1,0 +1,58 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Docker Compose .NET Core",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "compose-debug",
+            "postDebugTask": "compose-debug-down",
+            "program": "${workspaceFolder}/PostgresEnumPrototype/bin/Debug/net6.0/PostgresEnumPrototype.dll",
+            "args":[],
+            "cwd":"${workspaceFolder}/PostgresEnumPrototype",
+            "stopAtEntry": false,
+            "logging": {
+                "moduleLoad": false
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5001/",
+                "ConnectionStrings__PostgresMessagesDb": "host=localhost;port=5432;database=messagesdb;username=username123;password=password123",
+            },"serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/PostgresEnumPrototype/bin/Debug/net6.0/PostgresEnumPrototype.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PostgresEnumPrototype",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
